@@ -4,18 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0f7a4a" />
-    <meta name="color-scheme" content="light" />
+    <meta name="color-scheme" content="light dark" />
     <title>PageMoor — Discover Books That Move You Forward</title>
     <meta name="description" content="Nigeria's friendly digital bookstore. Affordable digital books you can access instantly. Read on any device." />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://example.com/" />
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="PageMoor — Discover Books That Move You Forward" />
     <meta property="og:description" content="Nigeria's friendly digital bookstore. Affordable digital books you can access instantly." />
     <meta property="og:url" content="https://example.com/" />
     <meta property="og:image" content="https://example.com/og-cover.jpg" />
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="PageMoor — Discover Books That Move You Forward" />
     <meta name="twitter:description" content="Nigeria's friendly digital bookstore. Affordable digital books you can access instantly." />
@@ -23,8 +21,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <script>
+      // prevent FOUC — apply theme before paint
+      (function(){
+        try{
+          var t = localStorage.getItem('pm_theme');
+          if(!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          if(t==='dark') document.documentElement.classList.add('dark');
+          document.documentElement.style.colorScheme = t;
+        }catch(e){}
+      })();
+    </script>
   </head>
-  <body class="bg-white text-ink antialiased">
+  <body class="bg-white text-ink antialiased dark:bg-slate-950 dark:text-slate-100">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <noscript>

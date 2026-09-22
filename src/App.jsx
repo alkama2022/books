@@ -16,14 +16,14 @@ const Checkout = lazy(() => import('./pages/Checkout.jsx'))
 const Success = lazy(() => import('./pages/Success.jsx'))
 
 function Fallback(){
-  return <div className="max-w-[1280px] mx-auto px-4 py-10"><div className="h-32 animate-pulse bg-slate-100 rounded-2xl" /></div>
+  return <div className="max-w-[1280px] mx-auto px-4 py-10"><div className="h-32 animate-pulse bg-slate-100 dark:bg-slate-800 rounded-2xl" /></div>
 }
 
 function NotFound(){
   return (
     <div className="max-w-[640px] mx-auto px-4 py-16 text-center">
-      <h1 className="font-display font-extrabold text-3xl">Page not found</h1>
-      <p className="text-sm text-slate-500 mt-2">The page you’re looking for doesn’t exist.</p>
+      <h1 className="font-display font-extrabold text-3xl dark:text-white">Page not found</h1>
+      <p className="text-sm text-slate-500 dark:text-slate-400 mt-2">The page you’re looking for doesn’t exist.</p>
       <Link to="/" className="mt-6 inline-flex bg-brand-600 text-white px-6 py-3 rounded-full text-sm font-semibold">Go home</Link>
     </div>
   )
@@ -31,7 +31,7 @@ function NotFound(){
 
 export default function App(){
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-slate-950 transition-colors duration-300">
       <Navbar />
       <main className="flex-1">
         <ErrorBoundary>
@@ -53,12 +53,11 @@ export default function App(){
       </main>
       <Footer />
       <Toast />
-      {/* Mobile bottom nav - use Link to avoid full reload in production SPA */}
-      <nav className="lg:hidden fixed bottom-0 inset-x-0 bg-white border-t border-slate-200 flex justify-around py-2 z-40">
-        <Link to="/" className="flex flex-col items-center text-xs font-medium text-slate-600"><span className="text-lg">⌂</span>Home</Link>
-        <Link to="/books" className="flex flex-col items-center text-xs font-medium text-slate-600"><span className="text-lg">⌕</span>Explore</Link>
-        <Link to="/library" className="flex flex-col items-center text-xs font-medium text-slate-600"><span className="text-lg">📚</span>Library</Link>
-        <Link to="/profile" className="flex flex-col items-center text-xs font-medium text-slate-600"><span className="text-lg">👤</span>Profile</Link>
+      <nav className="lg:hidden fixed bottom-0 inset-x-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex justify-around py-2 z-40 transition-colors">
+        <Link to="/" className="flex flex-col items-center text-xs font-medium text-slate-600 dark:text-slate-400"><span className="text-lg">⌂</span>Home</Link>
+        <Link to="/books" className="flex flex-col items-center text-xs font-medium text-slate-600 dark:text-slate-400"><span className="text-lg">⌕</span>Explore</Link>
+        <Link to="/library" className="flex flex-col items-center text-xs font-medium text-slate-600 dark:text-slate-400"><span className="text-lg">📚</span>Library</Link>
+        <Link to="/profile" className="flex flex-col items-center text-xs font-medium text-slate-600 dark:text-slate-400"><span className="text-lg">👤</span>Profile</Link>
       </nav>
       <div className="lg:hidden h-[68px]" />
     </div>
